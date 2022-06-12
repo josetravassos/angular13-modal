@@ -4,15 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ModalComponent } from './modal/modal.component';
 import { HelloComponent } from './hello/hello.component';
-import { ModalContentLoaderDirective } from './modal/modal-content-loader.directive';
 import { ModalService } from './modal/modal.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ModalComponent,
-    HelloComponent,
-    ModalContentLoaderDirective
+    HelloComponent
   ],
   imports: [
     BrowserModule

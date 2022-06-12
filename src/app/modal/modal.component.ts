@@ -5,7 +5,6 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { ModalContentLoaderDirective } from './modal-content-loader.directive';
 
 @Component({
   selector: 'app-modal',
@@ -24,8 +23,6 @@ export class ModalComponent implements OnInit {
   modalService: any;
   _id: any;
 
-  @ViewChild(ModalContentLoaderDirective)
-  contentHolder!: ModalContentLoaderDirective;
 
   @HostListener('window:keydown', ['$event']) onkeydown(event: KeyboardEvent) {
     if (event.key === 'Escape') {
@@ -33,12 +30,9 @@ export class ModalComponent implements OnInit {
     }
   }
 
-  constructor(private viewContainerRef: ViewContainerRef) {}
+  constructor() {}
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   this.viewContainerRef.createComponent(this.content);
-    // }, 0);
   }
 
   setup(component: any, config: any, service: any) {

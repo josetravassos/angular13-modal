@@ -8,7 +8,6 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { ModalComponent } from './modal/modal.component';
-import { HelloComponent } from './hello/hello.component';
 import { ModalService } from './modal/modal.service';
 
 @Component({
@@ -60,8 +59,7 @@ export class AppComponent implements OnInit {
   }
 
   openModal() {
-    const ModalComponentRef =
-    this.viewContainerRef.createComponent(ModalComponent);
+    const ModalComponentRef = this.viewContainerRef.createComponent(ModalComponent);
     this.modalService.create(ModalComponentRef, {
       headerText: 'Modal Title',
       confirmText: 'Save',
