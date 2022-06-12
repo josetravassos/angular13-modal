@@ -59,8 +59,8 @@ export class AppComponent implements OnInit {
   }
 
   openModal() {
-    const ModalComponentRef = this.viewContainerRef.createComponent(ModalComponent);
-    this.modalService.create(ModalComponentRef, {
+    const modalComponentRef = this.viewContainerRef.createComponent(ModalComponent);
+    this.modalService.create(modalComponentRef, {
       headerText: 'Modal Title',
       confirmText: 'Save',
       cancelText: 'Close',

@@ -2,6 +2,7 @@
     secondaryActionLabel="{{cancelText}}" type="component-projection" (tacoComponentModalConfirm)="handleConfirm()"
     (tacoComponentModalClose)="close()" [isPending]="isPending ? true : undefined">
     <div slot="component-projection">
-        hello from modal!
+        <taco-article size="md" headline="Taco Article" desc="Here is a taco-article component inside of a taco-modal component. ">
+        </taco-article>
     </div>
 </taco-modal>
