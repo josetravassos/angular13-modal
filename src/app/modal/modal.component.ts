@@ -11,9 +11,9 @@ export class ModalComponent implements OnInit {
   bodyText = '';
   confirmText = 'OK';
   cancelText = 'CANCEL';
-  //  confirm: () => Promise<any>;
-  //  onCancel: () => void;
-   isPending = false;
+  confirm: (() => Promise<any>) | undefined;
+  onCancel: (() => void) | undefined;
+  isPending = false;
   content: any;
   modalService: any;
   _id: any;
@@ -22,20 +22,38 @@ export class ModalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('first', this.content)
   }
 
   setup(component: any, config: any, service: any) {
-    console.log('component', component)
-    console.log('config', config)
-    console.log('service', service)
+    // console.log('component', component)
+    // console.log('config', config)
+    // console.log('service', service)
     this.content = component;
     this.headerText = config.headerText;
     this.bodyText = config.bodyText;
     this.confirmText = config.confirmText;
     this.cancelText = config.cancelText;
     this.modalService = service;
-   // this.confirm = config.confirm;
+    this.confirm = config.confirm;
+  }
+
+  handleConfirm(): void {
+    if (this.confirm !== undefined) {
+      this.isPending = true;
+      this.confirm()
+        .then(() => {
+          this.modalService.close(this._id);
+        })
+        .catch(() => {
+          this.isPending = false;
+        });
+    } else {
+      this.modalService.close(this._id);
+    }
+  }
+
+  close(){
+    this.modalService.close(this._id);
   }
 
 }

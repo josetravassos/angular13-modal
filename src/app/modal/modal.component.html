@@ -1,8 +1,7 @@
-<h1>Hello Modal!</h1>
-
-<ng-container #modal></ng-container>
-
-{{headerText}}
-{{confirmText}}
-{{cancelText}}
-
+<taco-modal title="{{headerText}}" body="{{bodyText}}" actionLabel="{{confirmText}}"
+    secondaryActionLabel="{{cancelText}}" type="component-projection" (tacoComponentModalConfirm)="handleConfirm()"
+    (tacoComponentModalClose)="close()" [isPending]="isPending ? true : undefined">
+    <div slot="component-projection">
+        <ng-template modal-content></ng-template>
+    </div>
+</taco-modal>
