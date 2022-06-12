@@ -2,6 +2,7 @@
     secondaryActionLabel="{{cancelText}}" type="component-projection" (tacoComponentModalConfirm)="handleConfirm()"
     (tacoComponentModalClose)="close()" [isPending]="isPending ? true : undefined">
     <div slot="component-projection">
-        <ng-template modal-content></ng-template>
+        hello from modal!
+        <ng-template modal-content-loader></ng-template>
     </div>
 </taco-modal>

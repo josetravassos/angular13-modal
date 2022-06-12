@@ -1,12 +1,18 @@
-import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import { ModalContentLoaderDirective } from './modal-content-loader.directive';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
-
   headerText = '';
   bodyText = '';
   confirmText = 'OK';
@@ -18,10 +24,21 @@ export class ModalComponent implements OnInit {
   modalService: any;
   _id: any;
 
+  @ViewChild(ModalContentLoaderDirective)
+  contentHolder!: ModalContentLoaderDirective;
 
-  constructor() { }
+  @HostListener('window:keydown', ['$event']) onkeydown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.close();
+    }
+  }
+
+  constructor(private viewContainerRef: ViewContainerRef) {}
 
   ngOnInit(): void {
+    // setTimeout(() => {
+    //   this.viewContainerRef.createComponent(this.content);
+    // }, 0);
   }
 
   setup(component: any, config: any, service: any) {
@@ -52,8 +69,7 @@ export class ModalComponent implements OnInit {
     }
   }
 
-  close(){
+  close() {
     this.modalService.close(this._id);
   }
-
 }

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ModalComponent } from './modal/modal.component';
 import { HelloComponent } from './hello/hello.component';
-import { LoaderDirective } from './modal/loader.directive';
+import { ModalContentLoaderDirective } from './modal/modal-content-loader.directive';
 import { ModalService } from './modal/modal.service';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { ModalService } from './modal/modal.service';
     AppComponent,
     ModalComponent,
     HelloComponent,
-    LoaderDirective
+    ModalContentLoaderDirective
   ],
   imports: [
     BrowserModule
